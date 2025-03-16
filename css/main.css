@@ -1168,7 +1168,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #673637;
+  background: #a6bed0;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2237,7 +2237,7 @@ mjx-container + br {
   }
 }
 .site-brand-container {
-  background: #ffb6c1;
+  background: #ff69b4;
 }
 @media (max-width: 991px) {
   .site-brand-container {
