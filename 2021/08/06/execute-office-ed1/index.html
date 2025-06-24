@@ -225,7 +225,7 @@
         <p>1.打开注册表<br>2.位置：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT \ Excel.Sheet.12\shell\open\command</span><br></pre></td></tr></table></figure><br>和<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">HKEY_CLASSES_ROOT \ Excel.Sheet.8\shell\open\command</span><br></pre></td></tr></table></figure><br>3.双击右侧的(Default）或（默认）字段，将其中字符都修改为：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files\Microsoft Office\Root\Office16\EXCEL.EXE&quot; &quot;%1&quot;</span><br></pre></td></tr></table></figure><br>原来应该是：<br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;C:\Program Files\Microsoft Office\Root\Office16\EXCEL.EXE&quot; /dde</span><br></pre></td></tr></table></figure></p>
 <p>另外查阅资料时发现有人的建议是修改选项-高级-忽略DDE</p>
 <p>/<em> 笔者认为上述查阅资料的方法没有用 因为笔者已经实践过了 </em>/</p>
-
+<script type="text&#x2F;javascript" src="https://unpkg.com/kity@2.0.4/dist/kity.min.js"></script><script type="text&#x2F;javascript" src="https://unpkg.com/kityminder-core@1.4.50/dist/kityminder.core.min.js"></script><script defer="true" type="text&#x2F;javascript" src="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.js"></script><link rel="stylesheet" type="text&#x2F;css" href="https://unpkg.com/hexo-simple-mindmap@0.8.0/dist/mindmap.min.css">
     </div>
 
     
