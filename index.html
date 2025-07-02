@@ -165,6 +165,79 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://syntimebai.top/2025/07/02/numbers-and-analyze/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SynTime.BZJ">
+      <meta itemprop="description" content="IDK">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SynTime">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/07/02/numbers-and-analyze/" class="post-title-link" itemprop="url">numbers_and_analyze</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-07-02 17:24:25 / 修改时间：18:27:08" itemprop="dateCreated datePublished" datetime="2025-07-02T17:24:25+08:00">2025-07-02</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/xingce/" itemprop="url" rel="index"><span itemprop="name">xingce</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <center><font color = red size = "7">数量关系与资料分析</font></center>
+
+<h1 id="数学运算"><a href="#数学运算" class="headerlink" title="数学运算"></a>数学运算</h1><h2 id="代入排除法"><a href="#代入排除法" class="headerlink" title="代入排除法"></a>代入排除法</h2><p>题目选项信息充分，题目有几个量则选项有几个量与之对应，优先考虑排除，甚至可以只算部分，比如只算最后一位</p>
+<p>可以考虑边界</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">江苏2020-B类</span><br><span class="line"></span><br><span class="line">题目大意：参加某活动，第一次汇总1742人，第二次汇总1796，发现第一次计算有误，将某单位参加人数的个位数字与十位数字颠倒，已知这个单位参加人数的个位与十位数字之和10，求可能参加人数.</span><br><span class="line"></span><br><span class="line">A: 164  B:173  C:182</span><br><span class="line"></span><br><span class="line">ANS：C</span><br><span class="line"></span><br><span class="line">解析：由这个单位参加人数的个位与十位数字之和10，代入验证，再由第一次汇总与复核结果相差1796 - 1742 == 54。依次验证即可. 如C：182 - 128 == 54 OK</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">2024江苏</span><br><span class="line">售卖A，B两类物品，A类¥80/件，B类¥50/件，每买20A则送一个B。如果花了¥12100买了200个（包含赠送的B），求其中的A有多少。</span><br><span class="line">A:75  B:79</span><br><span class="line"></span><br><span class="line">ANS: A</span><br><span class="line"></span><br><span class="line">解析：和差倍比。代入求出赠送的B，然后根据总数量求出A，验证是不是12100即可</span><br><span class="line"></span><br><span class="line">代入A：如果A == 75；则B = 75 / 20 == 3。所以设买了x个B，则75 + x + 3 == 200; x == 122;</span><br><span class="line">total_price == 75 * 80 + 122 * 50 == 12100 OK</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">2024浙江选调</span><br><span class="line">公园正六边形灯塔，底边12m。A，B分别从对角处沿边顺时针走，V_A = 3 m/s V_B = 2 m/s.经过每个顶点都停下一秒，求A出发后多久能看到B【不在同一边看不到】</span><br><span class="line">A: 29  B: 34</span><br><span class="line"></span><br><span class="line">解析：注意到：假设A在A点，B在D点。A走一条边需 A_time = 12 / 3 + 1 == 5s; B_time = 12 / 2 + 1 == 7s。</span><br><span class="line">代入A：A：29 / 5 == 5, 29 % 5 == 4, 4s又走了一条边. A_x = 5 + 1 == 6;所处A点; B_x = 29 / 7 + 1，所处BC，所以排除</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://syntimebai.top/2025/06/20/deadly/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -188,10 +261,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-06-20 18:23:37 / 修改时间：18:28:26" itemprop="dateCreated datePublished" datetime="2025-06-20T18:23:37+08:00">2025-06-20</time>
+              <time title="创建时间：2025-06-20 18:23:37" itemprop="dateCreated datePublished" datetime="2025-06-20T18:23:37+08:00">2025-06-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-02 16:52:40" itemprop="dateModified" datetime="2025-07-02T16:52:40+08:00">2025-07-02</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -352,7 +431,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-06-24 16:11:03" itemprop="dateModified" datetime="2025-06-24T16:11:03+08:00">2025-06-24</time>
+                <time title="修改时间：2025-06-24 16:15:55" itemprop="dateModified" datetime="2025-06-24T16:15:55+08:00">2025-06-24</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -412,6 +491,8 @@
 <h2 id="无穷小量、无穷大量"><a href="#无穷小量、无穷大量" class="headerlink" title="无穷小量、无穷大量"></a>无穷小量、无穷大量</h2><p>定义、性质3</p>
 <h3 id="无穷小阶的比较"><a href="#无穷小阶的比较" class="headerlink" title="无穷小阶的比较"></a>无穷小阶的比较</h3><p>无穷小量与无穷大量的关系</p>
 <h2 id="渐近线定义"><a href="#渐近线定义" class="headerlink" title="渐近线定义"></a>渐近线定义</h2><h3 id="水平渐近线定义、铅直渐近线定义"><a href="#水平渐近线定义、铅直渐近线定义" class="headerlink" title="水平渐近线定义、铅直渐近线定义"></a>水平渐近线定义、铅直渐近线定义</h3><p>上面两个怎么符合大定义的，即怎么无限远离原点的</p>
+<h2 id="两个重要极限"><a href="#两个重要极限" class="headerlink" title="两个重要极限"></a>两个重要极限</h2><p>$ \lim\limits_{x -&gt; 0} \frac{sinx}  {x} = 1 $</p>
+<p>$ \lim\limits_{x -&gt; \infty} (1 + \frac{1}  {x})^x = e $</p>
 
       
     </div>
@@ -757,6 +838,84 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://syntimebai.top/2021/10/24/Digital-logic-design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SynTime.BZJ">
+      <meta itemprop="description" content="IDK">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SynTime">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/10/24/Digital-logic-design/" class="post-title-link" itemprop="url">Digital_logic_design</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-24 17:35:39" itemprop="dateCreated datePublished" datetime="2021-10-24T17:35:39+08:00">2021-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-07-02 18:15:27" itemprop="dateModified" datetime="2025-07-02T18:15:27+08:00">2025-07-02</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CS/" itemprop="url" rel="index"><span itemprop="name">CS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <font color = red>Teached By MD</font>
+
+<h1 id="Chapter-0-Preface"><a href="#Chapter-0-Preface" class="headerlink" title="Chapter 0 - Preface"></a>Chapter 0 - Preface</h1><p><img src="image-20250624180146118.png" alt="image-20250624180146118"></p>
+<p><img src="image-20250624180315290.png" alt="image-20250624180315290"></p>
+<p><img src="image-20250624181413064.png" alt="image-20250624181413064"></p>
+<h1 id="Chapter-1-Digital-Systems-and-Information"><a href="#Chapter-1-Digital-Systems-and-Information" class="headerlink" title="Chapter 1 Digital Systems and Information"></a>Chapter 1 Digital Systems and Information</h1>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://syntimebai.top/2021/08/06/execute-office-ed1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -829,89 +988,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://syntimebai.top/2013/01/01/basis/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="SynTime.BZJ">
-      <meta itemprop="description" content="IDK">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="SynTime">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2013/01/01/basis/" class="post-title-link" itemprop="url">basis</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2013-01-01 21:18:02" itemprop="dateCreated datePublished" datetime="2013-01-01T21:18:02+08:00">2013-01-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-06-24 16:11:23" itemprop="dateModified" datetime="2025-06-24T16:11:23+08:00">2025-06-24</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/web-blog/" itemprop="url" rel="index"><span itemprop="name">web-blog</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          内容被加密了, 请点击阅读全文输入密码查看.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2013/01/01/basis/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -976,20 +1057,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
