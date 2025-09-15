@@ -165,6 +165,93 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://syntimebai.top/2022/12/09/execute-mysql8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="SynTime.BZJ">
+      <meta itemprop="description" content="IDK">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SynTime">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/09/execute-mysql8/" class="post-title-link" itemprop="url">在*nix类系统使用C/C++连接mysql8的诸多问题及解决方案【本文在macOS12下实现】</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-12-09 14:54:03" itemprop="dateCreated datePublished" datetime="2022-12-09T14:54:03+08:00">2022-12-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-06-20 18:40:24" itemprop="dateModified" datetime="2025-06-20T18:40:24+08:00">2025-06-20</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL/" itemprop="url" rel="index"><span itemprop="name">MySQL</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>首先需要安装mysql8，这里不再赘述。</p>
+<p>默认安装目录是<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/<span class="keyword">local</span>/mysql</span><br></pre></td></tr></table></figure></p>
+<p>之后需要</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp <span class="regexp">/usr/</span>local<span class="regexp">/mysql/</span>lib<span class="regexp">/libssl.1.1.dylib /u</span>sr<span class="regexp">/local/</span>lib</span><br></pre></td></tr></table></figure>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp <span class="regexp">/usr/</span>local<span class="regexp">/mysql/</span>lib<span class="regexp">/libcrypto.1.1.dylib /u</span>sr<span class="regexp">/local/</span>lib</span><br></pre></td></tr></table></figure>
+<p>libssl.1.1.dylib 和 libcrypto.1.1.dylib 是动态链接库，不仅这里要写上，在运行代码之前，需要将这两个动态库拷贝到 /usr/local/lib 下</p>
+<p>在代码执行的时候会去调用这两个库，如果没有就会报错：【下列只是罗列了一个Clion的情况，由于笔者在写这篇文章的时候terminal已关闭，无法找到之前的日志文件和错误信息，所以网上找了一个】<br><figure class="highlight gams"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dyld[<span class="number">72956</span>]: Library <span class="keyword">not</span> loaded: libssl<span class="number">.1</span><span class="number">.1</span>.dylib</span><br><span class="line">  Referenced from: /Users/您的用户名/Program/Clion-workplace/test/cmake-build-debug/cty</span><br><span class="line">  Reason: tried: <span class="string">&#x27;libssl.1.1.dylib&#x27;</span> (<span class="keyword">no</span> such <span class="keyword">file</span>), <span class="string">&#x27;/usr/local/lib/libssl.1.1.dylib&#x27;</span> (<span class="keyword">no</span> such <span class="keyword">file</span>), <span class="string">&#x27;/usr/lib/libssl.1.1.dylib&#x27;</span> (<span class="keyword">no</span> such <span class="keyword">file</span>), <span class="string">&#x27;/Users/chentianyi/Program/Clion-workplace/test/cmake-build-debug/libssl.1.1.dylib&#x27;</span> (<span class="keyword">no</span> such <span class="keyword">file</span>), <span class="string">&#x27;/usr/local/lib/libssl.1.1.dylib&#x27;</span> (<span class="keyword">no</span> such <span class="keyword">file</span>), <span class="string">&#x27;/usr/lib/libssl.1.1.dylib&#x27;</span> (<span class="keyword">no</span> such <span class="keyword">file</span>)</span><br><span class="line"></span><br><span class="line">zsh: <span class="keyword">abort</span>      ./test</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>由于libmysqlclient.21.dylib文件没有导入这里可能还会报个错：@rpath/libmysqlclient.21.dylib 后面略</p>
+<p>建议使用<br><figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">ln</span> -s /usr/<span class="keyword">local</span>/mysql/<span class="keyword">lib</span>/libmysqlclient<span class="number">.21</span>.dylib /usr/<span class="keyword">local</span>/<span class="keyword">lib</span>/libmysqlclient<span class="number">.21</span>.dylib</span><br></pre></td></tr></table></figure></p>
+<p>mac升级之后开启了SIP（System Integrity Protection），增加了rootless机制，导致即使在root权限下依然无法修改文件，在必要时候为了能够修改下面的文件，我们只能关闭该保护机制。但上面的方法可以无视SIP，【如果不用上面的方法而用：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s <span class="regexp">/usr/</span>local<span class="regexp">/mysql/</span>lib<span class="regexp">/libmysqlclient.21.dylib /u</span>sr<span class="regexp">/lib/</span>libmysqlclient.<span class="number">21</span>.dylib</span><br></pre></td></tr></table></figure>
+<p>则往往会提示无法创建/usr/lib/libmysqlclient.21.dylib的软连接】。由于我不想关SIP，所以尝试了通过创建/usr/local/lib/libmysqlclient.21.dylib软连接来解决这个问题</p>
+<p>之后提供一个测试的例子，您必须对例子中的汉字部分进行替换，用汉字是为了方便您定位(test.c)【C++ 同理】<br><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">include</span> &lt;stdio.<span class="keyword">h</span>&gt;</span><br><span class="line">#<span class="keyword">include</span> &lt;mysql.<span class="keyword">h</span>&gt;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> host[] = <span class="string">&quot;您的localhost&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> user[] = 您的mysql用户名&quot;;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> <span class="keyword">pwd</span>[] = <span class="string">&quot;您的mysql密码&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> database[] = <span class="string">&quot;要连接的数据库名&quot;</span>;</span><br><span class="line">unsigned int port = mysql端口号;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    MYSQL myCont;</span><br><span class="line">    mysql_init(&amp;myCont);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (mysql_real_connect(&amp;myCont, host, user, <span class="keyword">pwd</span>, database, port, nullptr, 0)) &#123;</span><br><span class="line">        printf(<span class="string">&quot;Hello mysql\n&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        printf(<span class="string">&quot;connect failed!\n&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果要输出连接错误的信息，则将上述语句修改printf(&quot;ERROR Reson:%s&quot;,mysql_error(&amp;myCont));</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    mysql_close(&amp;myCont);</span><br><span class="line">    <span class="keyword">return</span> 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>编译运行：<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -I <span class="regexp">/usr/</span>local<span class="regexp">/mysql/i</span>nclude<span class="regexp">/ -L /u</span>sr<span class="regexp">/local/my</span>sql<span class="regexp">/lib/</span> test.c -o test -lmysqlclient</span><br></pre></td></tr></table></figure><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./test</span><br></pre></td></tr></table></figure><br>相信有一定基础的人应该能看明白例子的输出，这里不再赘述。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://syntimebai.top/2021/10/24/Digital-logic-design/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -465,20 +552,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
